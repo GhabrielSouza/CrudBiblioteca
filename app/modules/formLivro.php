@@ -15,7 +15,7 @@
 
 <body class="container">
     <div class="container_form">
-        <form action="../src/create.php?tipo=livro" method="post" id="form_livro">
+        <form action="src/create.php?tipo=livro" method="post" id="form_livro">
 
             <div class="div_titulo_livro">
                 <label for="titulo">Titulo:</label><br>
@@ -36,7 +36,8 @@
             <label for="categoria_id">Selecione a categoria:</label>
 
             <?php
-            require("../src/conexao.php");
+            //echo getcwd();
+            require("src/conexao.php");
 
             $sql = "SELECT * FROM categoria";
             $result = $conn->query($sql);

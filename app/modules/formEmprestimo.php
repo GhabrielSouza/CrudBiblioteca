@@ -15,18 +15,18 @@
 
 <body>
   <div>
-    <form action="../src/create.php?tipo=emprestimo" method="post">
+    <form action="src/create.php?tipo=emprestimo" method="post">
 
       <label for="categoria_id">Selecione o usuario:</label>
 
       <?php
-      require("../src/conexao.php");
+      require("src/conexao.php");
 
       $sql = "SELECT * FROM usuario";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
-        echo "<select name='usuario' class='usuario_id' id='usuario_id' require>";
+        echo "<select name='id_usuario' class='id_usuario' id='id_usuario' require>";
         while ($row = $result->fetch_assoc()) {
           echo "  <option value=" . $row["id_usuario"] . ">" . $row["nome"] . "</option>";
         }
@@ -44,7 +44,7 @@
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
-        echo "<select name='livro' class='livro_id' id='livro_id' require>";
+        echo "<select name='id_livro' class='id_livro' id='id_livro' require>";
         while ($row = $result->fetch_assoc()) {
           echo "<option value=" . $row["id_livro"] . ">" . $row["titulo"] . "</option>";
         }
@@ -55,12 +55,6 @@
 
       $conn->close();
       ?>
-
-      <div class="div_valor">
-        <label for="valor">Valor do Empréstimo:</label>
-        <input type="number" id="valor" name="valor" required placeholder="Digite o valor" />
-      </div>
-
       <div class="div_data_emprestimo">
         <label for="data_emprestimo">Data de Empréstimo:</label>
         <input type="date" id="data_emprestimo" name="data_emprestimo" required />
