@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #fff2e1;
+  height: 100vh;
+}
+
+#form_livro {
+  background-color: #fff;
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+#form_livro label {
+  display: block;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+
+#form_livro input {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 1em;
+  border: 1px solid black;
+  padding: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#form_livro input::placeholder {
+  font-family: "Montserrat", sans-serif;
+}
+
+#form_livro .categoria_id,
+#form_livro .autor_id {
+  margin-bottom: 1em;
+}
+
+#form_livro a {
+  text-decoration: none;
+  color: rgb(189, 52, 52);
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1em;
+}
+
+#form_livro a:hover {
+  color: rgb(0, 0, 0);
+  transition: 1s all;
+}
+
+#form_livro button {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  padding: 10px;
+  background-color: #a79277;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#form_livro button:hover {
+  font-weight: 500;
+  background-color: #d1bb9e;
+}
+
+#form_livro select {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  border: 1px solid black;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#form_livro option {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 1em;
+  border: 1px solid black;
+}
+
+.div_descricao_livro_textarea {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 1em;
+  border: 1px solid black;
+  padding: 0.5em;
+  resize: none;
+}

@@ -1,0 +1,101 @@
+body {
+  min-height: 100vh;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.header_container_link {
+  color: black;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header_container_link:hover {
+  color: #a79277;
+}
+
+.header_container_link_logo {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.header_container_link_logo:hover {
+  color: #a79277;
+}
+
+.link_cadastrar_usuario {
+  width: 15%;
+  font-weight: 500;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+}
+
+.link_cadastrar_usuario:hover {
+  color: #a79277;
+}
+
+.link_cadastrar_usuario img {
+  width: 20%;
+}
+
+.header_container {
+  background-color: #d1bb9e;
+}
+
+.footer_container_principal {
+  background-color: #ead8c0;
+  border-top: 2px solid white;
+}
+
+.container_main {
+  background-color: #fff2e1;
+  height: 50em;
+}
+
+.container_cards {
+  box-sizing: border-box;
+}
+
+.container_cards_item {
+  width: 18em;
+  height: 25em;
+  margin-bottom: 1em;
+}
+
+.card_body_ul {
+  list-style: none;
+}
+
+.card-link-upd,
+.card-link-del {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #a79277;
+  border-radius: 50%;
+  background: #fff2e1;
+  text-decoration: none;
+}
+
+.card-link-upd:hover,
+.card-link-del:hover {
+  background: #ead8c0;
+}
+
+.container_main_vazio_paragrafo {
+  font-size: 36px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.footer_container_principal_redes_list,
+.footer_container_principal_links_list {
+  list-style: none;
+}
+
+.footer_container_principal_redes_list_item,
+.footer_container_principal_links_list_link {
+  font-family: "Montserrat", sans-serif;
+  color: #a79277;
+}
