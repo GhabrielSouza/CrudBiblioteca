@@ -42,15 +42,15 @@ require('./src/conexao.php');
                 Funções
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item " href="/modules/formLivro.php">Cadastrar livro</a></li>
-                <li><a class="dropdown-item " href="/modules/formCategoria.html">Cadastrar categoria</a></li>
-                <li><a class="dropdown-item " href="/modules/formAutor.html">Cadastrar autor</a></li>
-                <li><a class="dropdown-item " href="/modules/formEmprestimo.php">Realizar Emprestimo</a></li>
+                <li><a class="dropdown-item " href="/modules/exibirLivros.php">Exibir livros</a></li>
+                <li><a class="dropdown-item " href="/modules/exibirCategorias.php">Exibir categorias</a></li>
+                <li><a class="dropdown-item " href="/modules/exibirAutores.php">Exibir autores</a></li>
+                <li><a class="dropdown-item " href="/modules/exibirEmprestimos.php">Exibir Emprestimos</a></li>
               </ul>
             </li>
           </ul>
           <a class="link-offset-2 link-underline link-underline-opacity-0 link_cadastrar_usuario d-flex align-items-center header_container_link_user"
-            href="/modules/formUsuario.html">Cadastrar Usuário <img class="ps-3 header_container_link_logo"
+            href="/modules/exibirUsuarios.php">Exibir Usuarios <img class="ps-3 header_container_link_logo"
               src="assets/account_circle_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Cadastrar Usuário"></a>
         </div>
       </div>
