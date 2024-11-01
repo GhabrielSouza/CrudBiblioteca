@@ -18,7 +18,7 @@ if ($tipo == "livro") {
   VALUES ('$titulo', '$ano_de_publicacao' , '$descricao' , '$id_autor', '$id_categoria');";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../index.php");
+        header("location:../../../index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -39,13 +39,13 @@ if ($tipo == "usuario") {
   VALUES ('$nome', '$email', '$telefone', '$bairro')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New records created successfully";
+        header("location:../../../index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
-//cria uma categoria na tabela.
+//cria uma autor na tabela.
 if ($tipo == "autor") {
 
     $autor = $_POST['nomeAutor'];
@@ -56,7 +56,7 @@ if ($tipo == "autor") {
   VALUES ('$autor', '$nacionalidade')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New records created successfully";
+        header("location:../../../modules/formLivro.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -65,14 +65,14 @@ if ($tipo == "autor") {
 //cria uma categoria na tabela.
 if ($tipo == "categoria") {
 
-    $descricao = $_POST['descricao'];
+    $genero = $_POST['genero'];
 
 
     $sql = "INSERT INTO categoria (genero)
-  VALUES ('$descricao')";
+  VALUES ('$genero')";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../modules/formLivro.php");
+        header("location:../../../modules/formLivro.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -94,7 +94,7 @@ if ($tipo == "emprestimo") {
 
 
     if ($conn->query($sql) === TRUE) {
-        echo "New records created successfully";
+        header("location:../../../index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

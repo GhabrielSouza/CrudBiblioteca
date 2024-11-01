@@ -85,7 +85,7 @@ require('./src/conexao.php');
                   </div>
                   <div class="card-body d-flex justify-content-around ">
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
-                      <li> <a href="" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
+                      <li> <a href="./modules/formLivro.php?tipo=update&id=' . $row['id_livro'] . '" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
                       <li> <a href="./modules/src/delete.php?tipo=livro&id=' . $row['id_livro'] . '" class="card-link-del"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>
                     </ul>
                 </div>

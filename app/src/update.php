@@ -1,74 +1,82 @@
 <?php
+
+$id = $_GET['id'];
+$tipo = $_GET['tipo'];
 require("conexao.php");
 
-$tipo = $_GET['tipo'];
+// Atualiza um livro na tabela.
+if ($tipo == "livro") {
+    $titulo = $_POST['titulo'];
+    $ano_de_publicacao = $_POST['ano_de_publicacao'];
+    $id_categoria = trim($_POST['categoria']);
+    $id_autor = trim($_POST['autor']);
+    $descricao = $_POST['descricao'];
 
-//cria um livro na tabela.
+    $sql = "UPDATE livro SET
+        titulo = '$titulo',
+        ano_de_publicacao = '$ano_de_publicacao',
+        categoria = '$id_categoria',
+        autor = '$id_autor',
+        descricao = '$descricao'
+        WHERE id= $id";
 
-if (tipo == "livro") {
-
-  $titulo = $_POST['titulo'];
-  $titulo = $_POST['ano_de_publicacao'];
-  $categoria = $_POST['categoria'];
-
-
-  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-  VALUES ('John', 'Doe', 'john@example.com');";
-
-  if ($conn->multi_query($sql) === TRUE) {
-    echo "New records created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-
+    if ($conn->query($sql) === TRUE) {
+        header("location:../../index.php"); 
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 }
 
-//cria um usuario na tabela.
-if (tipo == "usuario") {
-
+// Atualiza um usuario na tabela.
+if ($tipo == "usuario") {
   $nome = $_POST['nome'];
   $email = $_POST['email'];
   $telefone = $_POST['telefone'];
   $bairro = $_POST['bairro'];
 
+  $sql = "UPDATE usuario SET
+      nome = '$nome',
+      email = '$email',
+      telefone = '$telefone',
+      bairro = '$bairro'
+      WHERE id_usuario = $id"; 
 
-
-  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-  VALUES ('John', 'Doe', 'john@example.com');";
-
-  if ($conn->multi_query($sql) === TRUE) {
-    echo "New records created successfully";
+  if ($conn->query($sql) === TRUE) {
+      header("location:../../index.php"); 
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+      echo "Error updating record: " . $conn->error;
   }
 }
+// Atualiza um autor na tabela
+if ($tipo == "autor") {
+    $nomeAutor = $_POST['nomeAutor'];
+    $nacionalidade = $_POST['nacionalidade'];
 
-//cria uma categoria na tabela.
-if (tipo == "categoria") {
+    $sql = "UPDATE autor SET
+        nome = '$nomeAutor',
+        nacionalidade = '$nacionalidade'
+        WHERE id_autor = $id"; 
 
-  $descricao = $_POST['descricao'];
-
-
-  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-  VALUES ('John', 'Doe', 'john@example.com');";
-
-  if ($conn->multi_query($sql) === TRUE) {
-    echo "New records created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+    if ($conn->query($sql) === TRUE) {
+        header("location:../../index.php"); 
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 }
 
-//cria um emprestimo na tabela.
-if (tipo == "emprestimo") {
-  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-  VALUES ('John', 'Doe', 'john@example.com');";
+// Atualiza uma categoria na tabela
+if ($tipo == "categoria") {
+    $genero = $_POST['genero'];
 
-  if ($conn->multi_query($sql) === TRUE) {
-    echo "New records created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+    $sql = "UPDATE categoria SET
+        genero = '$genero'
+        WHERE id_categoria = $id"; 
+
+    if ($conn->query($sql) === TRUE) {
+        header("location:../../index.php"); 
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 }
 
 $conn->close();

@@ -1,5 +1,5 @@
 <?php
-require("../src/conexao.php");
+require("../../../src/conexao.php");
 
 $tipo = $_GET['tipo'];
 
@@ -18,7 +18,7 @@ if ($tipo == "livro") {
   VALUES ('$titulo', '$ano_de_publicacao' , '$descricao' , '$id_autor', '$id_categoria');";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../index.php");
+        header("location:../../../index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -39,13 +39,13 @@ if ($tipo == "usuario") {
   VALUES ('$nome', '$email', '$telefone', '$bairro')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New records created successfully";
+        header("location:../../../index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
-//cria uma categoria na tabela.
+//cria uma autor na tabela.
 if ($tipo == "autor") {
 
     $autor = $_POST['nomeAutor'];
@@ -56,7 +56,7 @@ if ($tipo == "autor") {
   VALUES ('$autor', '$nacionalidade')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New records created successfully";
+        header("location:../../../modules/formLivro.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -65,14 +65,14 @@ if ($tipo == "autor") {
 //cria uma categoria na tabela.
 if ($tipo == "categoria") {
 
-    $descricao = $_POST['descricao'];
+    $genero = $_POST['genero'];
 
 
     $sql = "INSERT INTO categoria (genero)
-  VALUES ('$descricao')";
+  VALUES ('$genero')";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../modules/formLivro.php");
+        header("location:../../../modules/formLivro.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -81,35 +81,20 @@ if ($tipo == "categoria") {
 //cria um emprestimo na tabela.
 if ($tipo == "emprestimo") {
     //id;livro_id;usuario_id;data_emprestimo;data_devolucao;valor
-    $livro = $_POST['livro'];
-    $usuario = $_POST['usuario'];
+    $id_usuarios = $_POST["id_usuario"];
+    $id_livros = $_POST["id_livro"];
     $data_emprestimo = $_POST['data_emprestimo'];
     $data_devolucao = $_POST['data_devolucao'];
-    $valor = $_POST['valor'];
-
-
-    //pesquisa o id do usuario escolhida;
-    $sql = "SELECT id_usuarios FROM usuarios where nome = '$usuario'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-
-    $id_usuarios = $row["id_usuarios"];
-
-    //pesquisa o id do livro escolhida;
-    $sql = "SELECT id_livros FROM livros where nome = '$livro'";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-
-    $id_livros = $row["id_livros"];
+    
 
 
     //insere os dados na tabela emprestimo
-    $sql = "INSERT INTO emprestimo (livro_id, usuario_id, data_emprestimo, data_devolucao, valor)
-    VALUES ('$id_livros', '$id_usuarios', '$data_emprestimo', '$data_devolucao', '$valor')";
+    $sql = "INSERT INTO emprestimo (id_livro, id_usuario, data_emprestimo, data_devolucao)
+    VALUES ('$id_livros', '$id_usuarios', '$data_emprestimo', '$data_devolucao')";
 
 
     if ($conn->query($sql) === TRUE) {
-        echo "New records created successfully";
+        header("location:../../../index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
