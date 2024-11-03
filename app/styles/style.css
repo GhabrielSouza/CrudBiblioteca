@@ -1,7 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
   height: auto;
-  box-sizing: border-box;
 }
 
 .header_container_link {
@@ -98,4 +101,10 @@ body {
 .footer_container_principal_links_list_link {
   font-family: "Montserrat", sans-serif;
   color: #a79277;
+}
+
+.card-body {
+  box-sizing: border-box;
+  background-color: #ead8c0;
+  border-radius: 15px;
 }
