@@ -33,13 +33,23 @@ require('./src/conexao.php');
             <li class="nav-item">
               <a class="nav-link header_container_link" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link header_container_link" href="#">Cadastrados</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle header_container_link" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Cadastrar
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item " href="/modules/formLivro.php">Cadastrar livros</a></li>
+                <li><a class="dropdown-item " href="/modules/formCategoria.php">Cadastrar categorias</a></li>
+                <li><a class="dropdown-item " href="/modules/formAutor.php">Cadastrar autores</a></li>
+                <li><a class="dropdown-item " href="/modules/formEmprestimo.php">Cadastrar Emprestimos</a></li>
+                <li><a class="dropdown-item " href="/modules/formUsuario.php">Cadastrar Usuario</a></li>
+              </ul>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle header_container_link" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Funções
+                Exibições
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item " href="/modules/exibirLivros.php">Exibir livros</a></li>
