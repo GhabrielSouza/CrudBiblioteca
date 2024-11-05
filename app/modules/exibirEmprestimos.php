@@ -31,13 +31,25 @@
                         <li class="nav-item">
                             <a class="nav-link header_container_link" aria-current="page" href="#">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link header_container_link" href="#">Cadastrados</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastrar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item " href="/modules/formLivro.php">Cadastrar livros</a></li>
+                                <li><a class="dropdown-item " href="/modules/formCategoria.php">Cadastrar categorias</a>
+                                </li>
+                                <li><a class="dropdown-item " href="/modules/formAutor.php">Cadastrar autores</a></li>
+                                <li><a class="dropdown-item " href="/modules/formEmprestimo.php">Cadastrar
+                                        Emprestimos</a></li>
+                                <li><a class="dropdown-item " href="/modules/formUsuario.php">Cadastrar Usuario</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Funções
+                                Exibições
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item " href="/modules/exibirLivros.php">Exibir livros</a></li>
@@ -59,20 +71,21 @@
     </header>
     <main class="container_main">
         <h1 class="p-3">Emprestimos:</h1>
-        <?php
-        require("src/conexao.php");
+        <div class="mx-5">
+            <?php
+            require("src/conexao.php");
 
-        $sql = "SELECT *
+            $sql = "SELECT *
         FROM emprestimo e
         JOIN usuario u ON u.id_usuario = e.id_usuario
         JOIN livro l ON l.id_livro = e.id_livro";
-        $result = $conn->query($sql);
+            $result = $conn->query($sql);
 
 
-        if ($result->num_rows > 0) {
-            echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
-            while ($row = $result->fetch_assoc()) {
-                echo '
+            if ($result->num_rows > 0) {
+                echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
+                while ($row = $result->fetch_assoc()) {
+                    echo '
                <div class="card-body d-flex justify-content-around ">
                 <p>' . $row['nome'] . '</p>
                 <p>' . $row['titulo'] . '</p>
@@ -85,10 +98,10 @@
                 </ul>
             </div>
             ';
-            }
-            echo ' </div>';
-        } else {
-            echo '
+                }
+                echo ' </div>';
+            } else {
+                echo '
             
           <div class="container_main_vazio d-flex flex-column align-items-center pt-5">
             <img class="w-25" src="../assets/livro-removebg-preview.png" alt="Nenhuma categorias cadastrada">
@@ -96,11 +109,12 @@
                 <p class="container_main_vazio_paragrafo">Nenhum emprestimo cadastrado...</p>
             </a>
           </div>';
-        }
+            }
 
-        $conn->close();
+            $conn->close();
 
-        ?>
+            ?>
+        </div>
     </main>
     <footer>
         <div class="footer_container_principal d-flex p-4 justify-content-around">

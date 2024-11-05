@@ -31,13 +31,25 @@
                         <li class="nav-item">
                             <a class="nav-link header_container_link" aria-current="page" href="#">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link header_container_link" href="#">Cadastrados</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Cadastrar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item " href="/modules/formLivro.php">Cadastrar livros</a></li>
+                                <li><a class="dropdown-item " href="/modules/formCategoria.php">Cadastrar categorias</a>
+                                </li>
+                                <li><a class="dropdown-item " href="/modules/formAutor.php">Cadastrar autores</a></li>
+                                <li><a class="dropdown-item " href="/modules/formEmprestimo.php">Cadastrar
+                                        Emprestimos</a></li>
+                                <li><a class="dropdown-item " href="/modules/formUsuario.php">Cadastrar Usuario</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Funções
+                                Exibições
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item " href="/modules/exibirLivros.php">Exibir livros</a></li>
@@ -55,19 +67,19 @@
     </header>
     <main class="container_main">
         <h1 class="p-3">Usuarios:</h1>
-        <?php
-        require("src/conexao.php");
+        <div class="mx-5">
+            <?php
+            require("src/conexao.php");
 
-        $sql = "SELECT * from usuario";
-        $result = $conn->query($sql);
+            $sql = "SELECT * from usuario";
+            $result = $conn->query($sql);
 
 
-        if ($result->num_rows > 0) {
-            echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
-            while ($row = $result->fetch_assoc()) {
-                echo '
-
-               <div class="d-flex justify-content-center card-body p-3 border border-white  m-3">
+            if ($result->num_rows > 0) {
+                echo '<div class="d-flex justify-content-around flex-wrap">';
+                while ($row = $result->fetch_assoc()) {
+                    echo '
+               <div class="card-body-exibir p-3 border border-white  m-3">
                     <h5>' . $row['nome'] . '</h5>
                     <ul class="py-1">
                         <li class="py-1">' . $row['email'] . '</li>
@@ -81,14 +93,15 @@
                     </ul>
                 </div> 
             ';
+                }
+                echo ' </div>';
+            } else {
+                echo "<a href='formUsuario.php'>nao existem usuarios cadastrados</a>";
             }
-            echo ' </div>';
-        } else {
-            echo "<a href='formUsuario.php'>nao existem usuarios cadastrados</a>";
-        }
-        $conn->close();
+            $conn->close();
 
-        ?>
+            ?>
+        </div>
     </main>
     <footer>
         <div class="footer_container_principal d-flex p-4 justify-content-around">
