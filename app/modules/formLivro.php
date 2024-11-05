@@ -53,7 +53,7 @@ if($tipo == "update"){
                 }
                 echo "</select>";
             } else {
-                echo "<a href='./formCategoria.html'>Não existe categoria! favor criar</a>";
+                echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
             }
 
             echo '
@@ -69,7 +69,7 @@ if($tipo == "update"){
                 }
                 echo "</select>";
             } else {
-                echo "<a href='./formAutor.html'>Não existe autor! favor criar</a>";
+                echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
             }
 
             $conn->close();
@@ -120,7 +120,7 @@ else{
                 }
                 echo "</select>";
             } else {
-                echo "<a href='./formCategoria.html'>Não existe categoria! favor criar</a>";
+                echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
             }
 
             echo '
@@ -136,7 +136,7 @@ else{
                 }
                 echo "</select>";
             } else {
-                echo "<a href='./formAutor.html'>Não existe autor! favor criar</a>";
+                echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
             }
 
             $conn->close();
