@@ -70,7 +70,7 @@
 
 
         if ($result->num_rows > 0) {
-            echo '<div class="d-flex gap-3 flex-wrap w-50">';
+            echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
             while ($row = $result->fetch_assoc()) {
                 echo '
                <div class="card-body d-flex justify-content-around ">
