@@ -89,11 +89,11 @@
                     <h5>' . $row['titulo'] . '</h5>
                     <p>' . $row['descricao'] . '</p>
                     <ul class="py-1">
-                        <li class="py-1">' . $row['autor'] . '</li>
+                        <li class="py-1">' . $row['nome'] . '</li>
                     </ul>
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
-                        <li> <a href="formUsuario.php?tipo=update&id=' . $row['id_usuario'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                        <li> <a href="src/delete.php?tipo=usuario&id=' . $row['id_usuario'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
+                        <li> <a href="formUsuario.php?tipo=update&id=' . $row['id_livro'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
+                        <li> <a href="src/delete.php?tipo=livro&id=' . $row['id_livro'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
                     </ul>
                 </div> 
             ';

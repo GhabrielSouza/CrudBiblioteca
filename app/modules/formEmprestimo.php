@@ -15,11 +15,87 @@
 
 <body>
   <div>
+    <?php
+    $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
+    $id = isset($_GET['id_emprestimo']) ? $_GET['id_emprestimo'] : null; 
+
+    $id_livro = isset($_GET['id_livro']) ? $_GET['id_livro'] : null;
+    $titulo = isset($_GET['titulo']) ? $_GET['titulo'] : null;
+    
+    $id_usuario = isset($_GET['id_usuario']) ? $_GET['id_usuario'] : null;
+    $nome = isset($_GET['nome']) ? $_GET['nome'] : null;
+    
+
+    if($tipo == "update"){
+      echo '
+      <form action="src/update.php?tipo=emprestimo&id='.$id.'" method="post">
+  
+        <label for="categoria_id">Selecione o usuario:</label>
+      ';
+   
+        require("src/conexao.php");
+  
+        $sql = "SELECT * FROM usuario";
+        $result = $conn->query($sql);
+  
+        if ($result->num_rows > 0) {
+          echo "<select name='id_usuario' class='id_usuario' id='id_usuario' require disabled>";
+          while ($row = $result->fetch_assoc()) {
+            echo "  <option value=" . $id_livro . ">" . $nome . "</option>";
+          }
+          echo "</select>";
+        } else {
+          echo "<a href='./formUsuario.php'>Não existe usuario cadastrado! favor criar</a>";
+        }
+      
+  
+        echo '
+        <label for="autor_id" class="autor_id_label">Selecione o livro:</label>
+        ';
+  
+        $sql = "SELECT * FROM livro";
+        $result = $conn->query($sql);
+  
+        if ($result->num_rows > 0) {
+          echo "<select name='id_livro' class='id_livro' id='id_livro' require disabled>";
+          while ($row = $result->fetch_assoc()) {
+            echo "<option value=" . $id_livro . ">" . $titulo . "</option>";
+          }
+          echo "</select>";
+        } else {
+          echo "<a href='./formLivro.html'>Não existe livro cadastrado! favor criar</a>";
+        }
+  
+        $conn->close();
+        
+  
+        echo '
+        <div class="div_data_emprestimo">
+          <label for="data_emprestimo">Data de Empréstimo:</label>
+          <input type="date" id="data_emprestimo" name="data_emprestimo" required />
+        </div>
+  
+        <div class="div_data_devolucao">
+          <label for="data_devolucao">Data de Devolução:</label>
+          <input type="date" id="data_devolucao" name="data_devolucao" required />
+        </div>
+  
+        <div class="div_botao_emprestimo">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>';
+    }
+
+    else{
+
+
+    
+    echo '
     <form action="src/create.php?tipo=emprestimo" method="post">
 
       <label for="categoria_id">Selecione o usuario:</label>
-
-      <?php
+    ';
+ 
       require("src/conexao.php");
 
       $sql = "SELECT * FROM usuario";
@@ -32,13 +108,13 @@
         }
         echo "</select>";
       } else {
-        echo "<a href='./formUsuario.html'>Não existe usuario cadastrado! favor criar</a>";
+        echo "<a href='./formUsuario.php'>Não existe usuario cadastrado! favor criar</a>";
       }
-      ?>
+    
 
-
+      echo '
       <label for="autor_id" class="autor_id_label">Selecione o livro:</label>
-      <?php
+      ';
 
       $sql = "SELECT * FROM livro";
       $result = $conn->query($sql);
@@ -54,7 +130,9 @@
       }
 
       $conn->close();
-      ?>
+      
+
+      echo '
       <div class="div_data_emprestimo">
         <label for="data_emprestimo">Data de Empréstimo:</label>
         <input type="date" id="data_emprestimo" name="data_emprestimo" required />
@@ -68,7 +146,9 @@
       <div class="div_botao_emprestimo">
         <button type="submit">Enviar</button>
       </div>
-    </form>
+    </form>';
+  }
+    ?>
   </div>
 </body>
 

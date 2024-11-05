@@ -76,19 +76,24 @@
             require("src/conexao.php");
 
             $sql = "SELECT *
-        from emprestimo";
+        FROM emprestimo e
+        JOIN usuario u ON u.id_usuario = e.id_usuario
+        JOIN livro l ON l.id_livro = e.id_livro";
             $result = $conn->query($sql);
 
 
             if ($result->num_rows > 0) {
-                echo '<div class="d-flex justify-content-around flex-wrap">';
+                echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
                 while ($row = $result->fetch_assoc()) {
                     echo '
-               <div class="card-body-exibir d-flex justify-content-around ">
-                <p>' . $row['id'] . '</p>
+               <div class="card-body d-flex justify-content-around ">
+                <p>' . $row['nome'] . '</p>
+                <p>' . $row['titulo'] . '</p>
+                <p>' . $row['data_emprestimo'] . '</p>
+                <p>' . $row['data_devolucao'] . '</p>
                 <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
-                    <li> <a href="" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                    <li> <a href="src/delete.php?tipo=emprestimo&id=' . $row['id_emprestimo'] . '" class="card-link-del"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>
+                    <li><a href="formEmprestimo.php?tipo=update&id_livro=' . $row['id_livro'] . '&titulo=' . $row['titulo'] . '&id_usuario=' . $row['id_usuario'] . '&nome=' . $row['nome'] . '&id_emprestimo=' . $row['id'] . '" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
+                    <li><a href="src/delete.php?tipo=emprestimo&id=' . $row['id'] . '" class="card-link-del"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>
 
                 </ul>
             </div>
