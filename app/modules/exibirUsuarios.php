@@ -63,10 +63,10 @@
 
 
         if ($result->num_rows > 0) {
-            echo '<div class="d-flex gap-3 flex-wrap w-50">';
+            echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
             while ($row = $result->fetch_assoc()) {
                 echo '
-               <div class="card-body p-3 border border-white  m-3">
+               <div class="d-flex justify-content-center card-body p-3 border border-white  m-3">
                     <h5>' . $row['nome'] . '</h5>
                     <ul class="py-1">
                         <li class="py-1">' . $row['email'] . '</li>
