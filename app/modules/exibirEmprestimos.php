@@ -71,7 +71,7 @@
             echo '<div class="d-flex gap-3 flex-wrap w-50">';
             while ($row = $result->fetch_assoc()) {
                 echo '
-               <div class="card-body d-flex justify-content-around ">
+               <div class="card-body-exibir d-flex justify-content-around ">
                 <p>' . $row['id'] . '</p>
                 <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
                     <li> <a href="" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>

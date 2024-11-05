@@ -72,7 +72,7 @@
             echo '<div class="d-flex gap-3 flex-wrap w-50">';
             while ($row = $result->fetch_assoc()) {
                 echo '
-               <div class="card-body p-3 border border-white  m-3">
+               <div class="card-body-exibir p-3 border border-white  m-3">
                     <h5>' . $row['titulo'] . '</h5>
                     <p>' . $row['descricao'] . '</p>
                     <ul class="py-1">

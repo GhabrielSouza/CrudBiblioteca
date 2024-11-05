@@ -72,7 +72,7 @@ require('./src/conexao.php');
       echo '<div class="container_cards py-5 px-5 d-flex justify-content-around flex-wrap">';
       while ($row = $result->fetch_assoc()) {
         echo '<div class="card container_cards_item" >
-                  <div class="card-body">
+                  <div class="card-body p-3">
                     <h5 class="card-title">' . $row['titulo'] . '</h5>
                     <p class="card-text">' . $row['descricao'] . '</p>
                   </div>
@@ -80,10 +80,10 @@ require('./src/conexao.php');
                     <li class="list-group-item">' . $row['genero'] . '</li>
                     <li class="list-group-item">' . $row['nome'] . '</li>
                   </ul>
-                  <div class="card-body">
+                  <div class="card-body p-2">
                     <a href="./modules/formEmprestimo.html" class="card-link">Realizar emprestimo</a>
                   </div>
-                  <div class="card-body d-flex justify-content-around ">
+                  <div class="card-body d-flex justify-content-around p-0">
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
                       <li> <a href="./modules/formLivro.php?tipo=update&id=' . $row['id_livro'] . '" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
                       <li> <a href="./modules/src/delete.php?tipo=livro&id=' . $row['id_livro'] . '" class="card-link-del"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>

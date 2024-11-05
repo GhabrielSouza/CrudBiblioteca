@@ -71,7 +71,7 @@
             echo '<div class="d-flex gap-3 flex-wrap w-50">';
             while ($row = $result->fetch_assoc()) {
                 echo '
-               <div class="card-body p-3 border border-white  m-3">
+               <div class="card-body-exibir p-3 border border-white  m-3">
                     <h5>' . $row['nome'] . '</h5>
                     <p>Nacionalidade: ' . $row['nacionalidade'] . '</p>
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
