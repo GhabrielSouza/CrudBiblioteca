@@ -79,5 +79,22 @@ if ($tipo == "categoria") {
     }
 }
 
+
+if ($tipo == "emprestimo") {
+    $data_emprestimo = $_POST['data_emprestimo'];
+    $data_devolucao = $_POST['data_devolucao'];
+
+    $sql = "UPDATE emprestimo SET
+        data_emprestimo = '$data_emprestimo',
+        data_devolucao = '$data_devolucao'
+        WHERE id = $id"; 
+
+    if ($conn->query($sql) === TRUE) {
+        header("location:../../index.php"); 
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+}
+
 $conn->close();
 ?>
