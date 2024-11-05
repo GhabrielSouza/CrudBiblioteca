@@ -91,7 +91,7 @@ require('./src/conexao.php');
                     <li class="list-group-item">' . $row['nome'] . '</li>
                   </ul>
                   <div class="card-body p-2">
-                    <a href="./modules/formEmprestimo.html" class="card-link">Realizar emprestimo</a>
+                    <a href="./modules/formEmprestimo.php?tipo=createIndex&id_livro=' . $row['id_livro'] . '&titulo=' . $row['titulo'] .'" class="card-link">Realizar emprestimo</a>
                   </div>
                   <div class="card-body d-flex justify-content-around p-0">
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">

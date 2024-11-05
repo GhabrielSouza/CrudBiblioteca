@@ -41,7 +41,7 @@
         if ($result->num_rows > 0) {
           echo "<select name='id_usuario' class='id_usuario' id='id_usuario' require disabled>";
           while ($row = $result->fetch_assoc()) {
-            echo "  <option value=" . $id_livro . ">" . $nome . "</option>";
+            echo "  <option value=" . $id_usuario . ">" . $nome . "</option>";
           }
           echo "</select>";
         } else {
@@ -86,9 +86,73 @@
       </form>';
     }
 
+    if($tipo == "createIndex"){
+      echo '
+      <form action="src/create.php?tipo=emprestimo" method="post">
+  
+        <label for="categoria_id">Selecione o usuario:</label>
+      ';
+   
+        require("src/conexao.php");
+  
+        $sql = "SELECT * FROM usuario";
+        $result = $conn->query($sql);
+  
+        if ($result->num_rows > 0) {
+          echo "<select name='id_usuario' class='id_usuario' id='id_usuario' require >";
+          while ($row = $result->fetch_assoc()) {
+            echo "  <option value=" . $row["id_usuario"] . ">" . $row["nome"] . "</option>";
+          }
+          echo "</select>";
+        } else {
+          echo "<a href='./formUsuario.php'>Não existe usuario cadastrado! favor criar</a>";
+        }
+      
+  
+        echo '
+        <label for="autor_id" class="autor_id_label">Selecione o livro:</label>
+        ';
+  
+        $sql = "SELECT * FROM livro";
+        $result = $conn->query($sql);
+  
+        if ($result->num_rows > 0) {
+          echo "<select name='id_livro' class='id_livro' id='id_livro' require >";
+          while ($row = $result->fetch_assoc()) {
+            if($row["id_livro"] == $id_livro){
+              echo "<option value=" . $row["id_livro"] . " selected>" . $row["titulo"] . "</option> ";
+            }
+            else{
+              echo "<option value=" . $row["id_livro"] . ">" . $row["titulo"] . "</option>";
+            }
+            
+          }
+          echo "</select>";
+        } else {
+          echo "<a href='./formLivro.php'>Não existe livro cadastrado! favor criar</a>";
+        }
+  
+        $conn->close();
+        
+  
+        echo '
+        <div class="div_data_emprestimo">
+          <label for="data_emprestimo">Data de Empréstimo:</label>
+          <input type="date" id="data_emprestimo" name="data_emprestimo" required />
+        </div>
+  
+        <div class="div_data_devolucao">
+          <label for="data_devolucao">Data de Devolução:</label>
+          <input type="date" id="data_devolucao" name="data_devolucao" required />
+        </div>
+  
+        <div class="div_botao_emprestimo">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>';
+    }
+
     else{
-
-
     
     echo '
     <form action="src/create.php?tipo=emprestimo" method="post">
@@ -126,7 +190,7 @@
         }
         echo "</select>";
       } else {
-        echo "<a href='./formLivro.html'>Não existe livro cadastrado! favor criar</a>";
+        echo "<a href='./formLivro.php'>Não existe livro cadastrado! favor criar</a>";
       }
 
       $conn->close();
