@@ -16,6 +16,7 @@
 <?php
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
 $id = isset($_GET['id']) ? $_GET['id'] : null; 
+$disabled;
 if($tipo == "update"){
     echo '
 <body class="container">
@@ -54,6 +55,7 @@ if($tipo == "update"){
                 echo "</select>";
             } else {
                 echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
+                $disabled = false;
             }
 
             echo '
@@ -70,12 +72,21 @@ if($tipo == "update"){
                 echo "</select>";
             } else {
                 echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
+                $disabled = false;
+
+            }
+
+            if ($disabled){
+                echo "<button type='submit'>Enviar</button>";
+            }
+
+            else{
+                echo "<button type='submit' disabled>Enviar</button>";
             }
 
             $conn->close();
 
 echo '
-            <button type="submit">Enviar</button>
 
         </form>
     </div>
@@ -117,10 +128,13 @@ else{
                 echo "<select name='categoria' class='categoria_id' id='categoria_id' required>";
                 while ($row = $result->fetch_assoc()) {
                     echo "<option value='" . $row["id_categoria"] . "'>" . $row["genero"] . "</option>";
+                    
                 }
                 echo "</select>";
             } else {
                 echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
+                $disabled = false;
+
             }
 
             echo '
@@ -137,13 +151,21 @@ else{
                 echo "</select>";
             } else {
                 echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
+                $disabled = false;
+
             }
 
             $conn->close();
 
-echo '
-            <button type="submit">Enviar</button>
 
+            if ($disabled){
+                echo "<button type='submit'>Enviar</button>";
+            }
+
+            else{
+                echo "<button type='submit' disabled>Enviar</button>";
+            }
+echo '
         </form>
     </div>
 </body>

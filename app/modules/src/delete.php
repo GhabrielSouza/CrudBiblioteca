@@ -21,7 +21,6 @@ try{
   if ($conn->query($sql) === TRUE) {
     if($tipo == "autor"){
       header("location:../exibir".$tipo."es.php");
-
     }
 
     else{

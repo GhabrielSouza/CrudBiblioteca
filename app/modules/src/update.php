@@ -20,11 +20,17 @@ if ($tipo == "livro") {
         descricao = '$descricao'
         WHERE id= $id";
 
-    if ($conn->query($sql) === TRUE) {
-        header("location:../../index.php"); 
-    } else {
-        echo "Error updating record: " . $conn->error;
+if ($conn->query($sql) === TRUE) {
+    if($tipo == "autor"){
+      header("location:../exibir".$tipo."es.php");
     }
+
+    else{
+      header("location:../exibir".$tipo."s.php");
+    }
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
 }
 
 // Atualiza um usuario na tabela.
@@ -41,10 +47,16 @@ if ($tipo == "usuario") {
       bairro = '$bairro'
       WHERE id_usuario = $id"; 
 
-  if ($conn->query($sql) === TRUE) {
-      header("location:../../index.php"); 
+if ($conn->query($sql) === TRUE) {
+    if($tipo == "autor"){
+      header("location:../exibir".$tipo."es.php");
+    }
+
+    else{
+      header("location:../exibir".$tipo."s.php");
+    }
   } else {
-      echo "Error updating record: " . $conn->error;
+    echo "Error deleting record: " . $conn->error;
   }
 }
 // Atualiza um autor na tabela
@@ -57,11 +69,17 @@ if ($tipo == "autor") {
         nacionalidade = '$nacionalidade'
         WHERE id_autor = $id"; 
 
-    if ($conn->query($sql) === TRUE) {
-        header("location:../../index.php"); 
-    } else {
-        echo "Error updating record: " . $conn->error;
+if ($conn->query($sql) === TRUE) {
+    if($tipo == "autor"){
+      header("location:../exibir".$tipo."es.php");
     }
+
+    else{
+      header("location:../exibir".$tipo."s.php");
+    }
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
 }
 
 // Atualiza uma categoria na tabela
@@ -72,11 +90,17 @@ if ($tipo == "categoria") {
         genero = '$genero'
         WHERE id_categoria = $id"; 
 
-    if ($conn->query($sql) === TRUE) {
-        header("location:../../index.php"); 
-    } else {
-        echo "Error updating record: " . $conn->error;
+  if ($conn->query($sql) === TRUE) {
+    if($tipo == "autor"){
+      header("location:../exibir".$tipo."es.php");
     }
+
+    else{
+      header("location:../exibir".$tipo."s.php");
+    }
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
 }
 
 
@@ -89,11 +113,17 @@ if ($tipo == "emprestimo") {
         data_devolucao = '$data_devolucao'
         WHERE id = $id"; 
 
-    if ($conn->query($sql) === TRUE) {
-        header("location:../../index.php"); 
-    } else {
-        echo "Error updating record: " . $conn->error;
+  if ($conn->query($sql) === TRUE) {
+    if($tipo == "autor"){
+      header("location:../exibir".$tipo."es.php");
     }
+
+    else{
+      header("location:../exibir".$tipo."s.php");
+    }
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
 }
 
 $conn->close();
