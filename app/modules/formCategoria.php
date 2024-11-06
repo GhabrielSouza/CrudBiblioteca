@@ -18,6 +18,18 @@
     $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
     $id = isset($_GET['id']) ? $_GET['id'] : null; 
 
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
+
+    if($erro == "duplicidade"){
+        echo "<script>alert('Ja existe este item');</script>";
+
+    }
+
+    if($erro == "padrao"){
+        echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
+
+    }
+
     if($tipo == "update"){
       echo '
       <form action="src/update.php?tipo=categoria&id='.$id.'" method="post">

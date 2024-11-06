@@ -25,6 +25,17 @@
     $id_usuario = isset($_GET['id_usuario']) ? $_GET['id_usuario'] : null;
     $nome = isset($_GET['nome']) ? $_GET['nome'] : null;
     
+    $erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
+
+  if($erro == "duplicidade"){
+      echo "<script>alert('Ja existe este item');</script>";
+
+  }
+
+  if($erro == "padrao"){
+      echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
+
+  }
 
     if($tipo == "update"){
       echo '

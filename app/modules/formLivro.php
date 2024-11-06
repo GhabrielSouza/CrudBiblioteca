@@ -16,7 +16,20 @@
 <?php
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
 $id = isset($_GET['id']) ? $_GET['id'] : null; 
-$disabled;
+$erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
+
+if($erro == "duplicidade"){
+    echo "<script>alert('Ja existe este item');</script>";
+
+}
+
+if($erro == "padrao"){
+    echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
+
+}
+
+$disabled = isset($_GET['disabled']) ? $_GET['disabled'] : null;
+$disabled = true;
 if($tipo == "update"){
     echo '
 <body class="container">
