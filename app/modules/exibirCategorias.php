@@ -71,7 +71,7 @@
         </nav>
     </header>
     <main class="container_main">
-        <h1 class="p-3">Categorais:</h1>
+        <h1 class="p-3">Categorias:</h1>
         <div class="mx-5">
             <?php
             require("src/conexao.php");
@@ -85,13 +85,12 @@
                 echo '<div class="d-flex justify-content-around flex-wrap ">';
                 while ($row = $result->fetch_assoc()) {
                     echo '
-               <div class="card-body-exibir py-3 px-3 border border-white  m-3">
+               <div class="card-body-exibir py-3 px-3 border border-white w-25 d-flex align-items-center flex-column">
                     <h5>' . $row['genero'] . '</h5>
                     
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
                         <li> <a href="formCategoria.php?tipo=update&id=' . $row['id_categoria'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
                         <li> <a href="src/delete.php?tipo=Categoria&id=' . $row['id_categoria'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
-
                     </ul>
                 </div> 
             ';
