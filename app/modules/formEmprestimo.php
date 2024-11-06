@@ -163,7 +163,7 @@
       </form>';
     }
 
-    else{
+    if($tipo == "create"){
     
     echo '
     <form action="src/create.php?tipo=emprestimo" method="post">

@@ -41,7 +41,7 @@
                                 <li><a class="dropdown-item " href="/modules/formCategoria.php">Cadastrar categorias</a>
                                 </li>
                                 <li><a class="dropdown-item " href="/modules/formAutor.php">Cadastrar autores</a></li>
-                                <li><a class="dropdown-item " href="/modules/formEmprestimo.php">Cadastrar
+                                <li><a class="dropdown-item " href="/modules/formEmprestimo.php?tipo=create">Cadastrar
                                         Emprestimos</a></li>
                                 <li><a class="dropdown-item " href="/modules/formUsuario.php">Cadastrar Usuario</a></li>
                             </ul>
