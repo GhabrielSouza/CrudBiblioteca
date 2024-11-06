@@ -83,18 +83,17 @@
 
 
             if ($result->num_rows > 0) {
-                echo '<div class="d-flex gap-3 flex-wrap w-50 justify-content-center">';
+                echo '<div class="d-flex justify-content-around flex-wrap">';
                 while ($row = $result->fetch_assoc()) {
                     echo '
-               <div class="card-body d-flex justify-content-around ">
+               <div class="card-body-exibir p-3">
                 <p>' . $row['nome'] . '</p>
                 <p>' . $row['titulo'] . '</p>
                 <p>' . $row['data_emprestimo'] . '</p>
                 <p>' . $row['data_devolucao'] . '</p>
-                <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
-                    <li><a href="formEmprestimo.php?tipo=update&id_livro=' . $row['id_livro'] . '&titulo=' . $row['titulo'] . '&id_usuario=' . $row['id_usuario'] . '&nome=' . $row['nome'] . '&id_emprestimo=' . $row['id'] . '" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                    <li><a href="src/delete.php?tipo=emprestimo&id=' . $row['id'] . '" class="card-link-del"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>
-
+                <ul class="card_body_ul d-flex gap-4 align-items-center justify-content-center p-0 m-0">
+                    <li><a href="formEmprestimo.php?tipo=update&id_livro=' . $row['id_livro'] . '&titulo=' . $row['titulo'] . '&id_usuario=' . $row['id_usuario'] . '&nome=' . $row['nome'] . '&id_emprestimo=' . $row['id'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
+                    <li><a href="src/delete.php?tipo=emprestimo&id=' . $row['id'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
                 </ul>
             </div>
             ';
