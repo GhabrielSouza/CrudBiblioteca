@@ -19,7 +19,14 @@ try{
   }
 
   if ($conn->query($sql) === TRUE) {
-    header("location:../../index.php");
+    if($tipo == "autor"){
+      header("location:../exibir".$tipo."es.php");
+
+    }
+
+    else{
+      header("location:../exibir".$tipo."s.php");
+    }
   } else {
     echo "Error deleting record: " . $conn->error;
   }

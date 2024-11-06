@@ -18,10 +18,15 @@ if ($tipo == "livro") {
   VALUES ('$titulo', '$ano_de_publicacao' , '$descricao' , '$id_autor', '$id_categoria');";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../../index.php");
+        if($tipo == "autor"){
+            header("location:../../../modules/exibir".$tipo."es.php");
+        }
+        else{
+            header("location:../../../modules/exibir".$tipo."s.php");
+        }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    } 
 
 }
 
@@ -39,10 +44,15 @@ if ($tipo == "usuario") {
   VALUES ('$nome', '$email', '$telefone', '$bairro')";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../../index.php");
+        if($tipo == "autor"){
+            header("location:../../../modules/exibir".$tipo."es.php");
+        }
+        else{
+            header("location:../../../modules/exibir".$tipo."s.php");
+        }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    } 
 }
 
 //cria uma autor na tabela.
@@ -56,10 +66,15 @@ if ($tipo == "autor") {
   VALUES ('$autor', '$nacionalidade')";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../../modules/formLivro.php");
+        if($tipo == "autor"){
+            header("location:../../../modules/exibir".$tipo."es.php");
+        }
+        else{
+            header("location:../../../modules/exibir".$tipo."s.php");
+        }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    } 
 }
 
 //cria uma categoria na tabela.
@@ -72,10 +87,15 @@ if ($tipo == "categoria") {
   VALUES ('$genero')";
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../../modules/formLivro.php");
+        if($tipo == "autor"){
+            header("location:../../../modules/exibir".$tipo."es.php");
+        }
+        else{
+            header("location:../../../modules/exibir".$tipo."s.php");
+        }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    }   
 }
 
 //cria um emprestimo na tabela.
@@ -94,10 +114,15 @@ if ($tipo == "emprestimo") {
 
 
     if ($conn->query($sql) === TRUE) {
-        header("location:../../../index.php");
+        if($tipo == "autor"){
+            header("location:../../../modules/exibir".$tipo."es.php");
+        }
+        else{
+            header("location:../../../modules/exibir".$tipo."s.php");
+        }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    } 
 }
 
 $conn->close();

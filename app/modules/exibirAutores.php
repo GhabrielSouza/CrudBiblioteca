@@ -22,14 +22,14 @@
             <div class="container-fluid">
                 <a class="navbar-brand header_container_link_logo" href="#">Scriptorium</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    data-bs-target="#git" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link header_container_link" aria-current="page" href="#">Home</a>
+                            <a class="nav-link header_container_link" aria-current="page" href="../../../index.php">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
@@ -100,9 +100,9 @@
                 echo '
             
           <div class="container_main_vazio d-flex flex-column align-items-center pt-5">
-            <img class="w-25" src="../assets/livro-removebg-preview.png" alt="Nenhuma categorias cadastrada">
-            <a class="text-center" href="formLivro.php">
-                <p class="container_main_vazio_paragrafo">Nenhum livro cadastrado...</p>
+            <img class="w-25" src="../assets/livro-removebg-preview.png" alt="Nenhum autor cadastrado...">
+            <a class="text-center" href="formAutor.php">
+                <p class="container_main_vazio_paragrafo">Nenhum autor cadastrado...</p>
             </a>
           </div>';
             }
