@@ -64,7 +64,7 @@
                     </ul>
                     <a class="link-offset-2 link-underline link-underline-opacity-0 link_cadastrar_usuario d-flex align-items-center header_container_link_user"
                         href="/modules/exibirUsuarios.php">Exibir Usuarios <img class="ps-3 header_container_link_logo"
-                            src="../assets/account_circle_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                            src="../assets/user.svg"
                             alt="Cadastrar Usuário"></a>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
                         <li> <a href="formCategoria.php?tipo=update&id=' . $row['id_categoria'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                        <li> <a href="src/delete.php?tipo=Categoria&id=' . $row['id_categoria'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
+                        <li> <a href="src/delete.php?tipo=Categoria&id=' . $row['id_categoria'] . '" class="card-link-del" onclick="return confirmDelete();"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
                     </ul>
                 </div> 
             ';
@@ -136,5 +136,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
+<script>
+  function confirmDelete() {
+    return confirm("Tem certeza de que deseja excluir este item?");
+  }
+</script>
 
 </html>

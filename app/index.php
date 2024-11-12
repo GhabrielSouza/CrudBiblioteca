@@ -61,7 +61,7 @@ require('./src/conexao.php');
           </ul>
           <a class="link-offset-2 link-underline link-underline-opacity-0 link_cadastrar_usuario d-flex align-items-center header_container_link_user"
             href="/modules/exibirUsuarios.php">Exibir Usuarios <img class="ps-3 header_container_link_logo"
-              src="assets/account_circle_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Cadastrar Usuário"></a>
+              src="assets/user.svg" alt="Cadastrar Usuário"></a>
         </div>
       </div>
     </nav>
@@ -96,7 +96,7 @@ require('./src/conexao.php');
                   <div class="card-body d-flex justify-content-around p-0">
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
                       <li> <a href="./modules/formLivro.php?tipo=update&id=' . $row['id_livro'] . '" class="card-link-upd"><img src="./assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                      <li> <a href="./modules/src/delete.php?tipo=livro&id=' . $row['id_livro'] . '" class="card-link-del"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>
+                      <li> <a href="./modules/src/delete.php?tipo=livro&id=' . $row['id_livro'] . '" class="card-link-del"  onclick="return confirmDelete();"><img src="./assets/delete.svg" alt="Deletar" class="px-1"></a></li>
                     </ul>
                 </div>
               </div>
@@ -144,4 +144,9 @@ require('./src/conexao.php');
     crossorigin="anonymous"></script>
 </body>
 
+<script>
+  function confirmDelete() {
+    return confirm("Tem certeza de que deseja excluir este item?");
+  }
+</script>
 </html>
