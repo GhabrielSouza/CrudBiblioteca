@@ -63,7 +63,7 @@
                     </ul>
                     <a class="link-offset-2 link-underline link-underline-opacity-0 link_cadastrar_usuario d-flex align-items-center header_container_link_user"
                         href="/modules/exibirUsuarios.php">Exibir Usuarios <img class="ps-3 header_container_link_logo"
-                            src="../assets/account_circle_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                            src="../assets/user.svg"
                             alt="Cadastrar Usuário"></a>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <p>' . $row['data_devolucao'] . '</p>
                 <ul class="card_body_ul d-flex gap-4 align-items-center justify-content-center p-0 m-0">
                     <li><a href="formEmprestimo.php?tipo=update&id_livro=' . $row['id_livro'] . '&titulo=' . $row['titulo'] . '&id_usuario=' . $row['id_usuario'] . '&nome=' . $row['nome'] . '&id_emprestimo=' . $row['id'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                    <li><a href="src/delete.php?tipo=emprestimo&id=' . $row['id'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
+                    <li><a href="src/delete.php?tipo=emprestimo&id=' . $row['id'] . '" class="card-link-del" onclick="return confirmDelete();" ><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
                 </ul>
             </div>
             ';
@@ -103,8 +103,8 @@
                 echo '
             
           <div class="container_main_vazio d-flex flex-column align-items-center pt-5">
-            <img class="w-25" src="../assets/livro-removebg-preview.png" alt="Nenhuma categorias cadastrada">
-            <a href="formEmprestimo.php">
+            <img class="w-25" src="../assets/livro-removebg-preview.png" alt="Nenhum emprestimo cadastrado...">
+            <a href="formEmprestimo.php?tipo=create">
                 <p class="container_main_vazio_paragrafo">Nenhum emprestimo cadastrado...</p>
             </a>
           </div>';
@@ -139,5 +139,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
+<script>
+  function confirmDelete() {
+    return confirm("Tem certeza de que deseja excluir este item?");
+  }
+</script>
 
 </html>

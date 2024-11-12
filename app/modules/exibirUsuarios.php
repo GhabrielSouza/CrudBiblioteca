@@ -88,7 +88,7 @@
                     </ul>
                     <ul class="card_body_ul d-flex gap-4 align-items-center p-0 m-0">
                         <li> <a href="formUsuario.php?tipo=update&id=' . $row['id_usuario'] . '" class="card-link-upd"><img src="../assets/edit.svg" alt="Atualizar" class="px-1"></a></li>
-                        <li> <a href="src/delete.php?tipo=usuario&id=' . $row['id_usuario'] . '" class="card-link-del"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
+                        <li> <a href="src/delete.php?tipo=usuario&id=' . $row['id_usuario'] . '" class="card-link-del" onclick="return confirmDelete();"><img src="../assets/delete.svg" alt="Deletar" class="px-1"></a></li>
 
                     </ul>
                 </div> 
@@ -96,7 +96,14 @@
                 }
                 echo ' </div>';
             } else {
-                echo "<a href='formUsuario.php'>nao existem usuarios cadastrados</a>";
+                echo '
+            
+                    <div class="container_main_vazio d-flex flex-column align-items-center pt-5">
+                        <img class="w-25" src="../assets/user.svg" alt="Nenhum emprestimo cadastrado...">
+                        <a href="formEmprestimo.php?tipo=create">
+                            <p class="container_main_vazio_paragrafo">Nenhum usuário cadastrado...</p>
+                        </a>
+                    </div>';
             }
             $conn->close();
 
@@ -127,5 +134,11 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
+<script>
+  function confirmDelete() {
+    return confirm("Tem certeza de que deseja excluir este item?");
+  }
+</script>
 
 </html>
