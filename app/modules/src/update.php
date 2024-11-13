@@ -1,8 +1,10 @@
 <?php
+require("conexao.php"); // cria conexão com o banco de dados
 
+//pega os dados pelo metodo get que serão usados para dar update nos dados
 $id = $_GET['id'];
 $tipo = $_GET['tipo'];
-require("conexao.php");
+
 
 // Atualiza um livro na tabela.
 if ($tipo == "livro") {
@@ -103,7 +105,7 @@ if ($tipo == "categoria") {
   }
 }
 
-
+// Atualiza um emprestimo na tabela.
 if ($tipo == "emprestimo") {
     $data_emprestimo = $_POST['data_emprestimo'];
     $data_devolucao = $_POST['data_devolucao'];

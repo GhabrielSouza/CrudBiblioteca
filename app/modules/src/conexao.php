@@ -1,4 +1,6 @@
 <?php
+// arquivo que cria a conexão do banco de dados;
+
 $servername = "localhost";
 $username = "root";
 $password = "root";

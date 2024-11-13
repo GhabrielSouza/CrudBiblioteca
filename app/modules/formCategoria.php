@@ -15,11 +15,14 @@
 <body>
 
     <?php
+     //pega os dados tipo e id se existirem na url para serem usados 
     $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
     $id = isset($_GET['id']) ? $_GET['id'] : null; 
 
+    //verifica se um erro foi passado pela url
     $erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
 
+    //se houver mostra na tela de acordo com o tipo do erro
     if($erro == "duplicidade"){
         echo "<script>alert('Ja existe este item');</script>";
 
@@ -30,6 +33,7 @@
 
     }
 
+    //vefica o tipo de operação
     if($tipo == "update"){
       echo '
       <form action="src/update.php?tipo=categoria&id='.$id.'" method="post">

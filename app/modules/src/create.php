@@ -1,24 +1,29 @@
 <?php
+//arquivo que insere os dados nas tabelas do banco de dados.
+
+//abre a conexão por meio do require do arquivo com os metodos pra criar conexão.
 require("conexao.php");
 
+
+//recebe os tipos via get e verifica para inserir em cada tabela.
 $tipo = $_GET['tipo'];
 
 //cria um livro na tabela.
-
 if ($tipo == "livro") {
 
-    try{
+    try{ //tenta criar 
         $titulo = $_POST['titulo'];
         $ano_de_publicacao = $_POST['ano_de_publicacao'];
         $id_categoria = trim($_POST['categoria']);
         $id_autor = trim($_POST['autor']);
         $descricao = $_POST['descricao'];
     
-        //insere os dados
+        //insere os dados na tabela livro
         $sql = "INSERT INTO livro (titulo, ano_publicacao,  descricao, id_autor, id_categoria)
       VALUES ('$titulo', '$ano_de_publicacao' , '$descricao' , '$id_autor', '$id_categoria');";
     
         if ($conn->query($sql) === TRUE) {
+            //esse if serve para redirecionar o usuario pra pagina certa, ja que pra autor o redirect tem ser pra uma pagina com sufixo "es" e nao apenas "s"
             if($tipo == "autor"){
                 header("location:../../../modules/exibir".$tipo."es.php");
             }
@@ -32,7 +37,7 @@ if ($tipo == "livro") {
         } 
 
     } catch (mysqli_sql_exception $e) {
-        // Código de erro 1062 indica uma entrada duplicada
+        // Trata a exceção
         if ($e->getCode() == 1062) {
             header("location:../../../modules/form".$tipo.".php?erro=duplicidade");
         } else {
@@ -49,18 +54,21 @@ if ($tipo == "livro") {
 //cria um usuario na tabela.
 if ($tipo == "usuario") {
 
-    try{
+    try{ //tenta criar 
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
         $bairro = $_POST['bairro'];
 
 
-
+        //insere os dados na tabela usuario
         $sql = "INSERT INTO usuario (nome, email, telefone, bairro)
     VALUES ('$nome', '$email', '$telefone', '$bairro')";
 
+
+        
         if ($conn->query($sql) === TRUE) {
+            //esse if serve para redirecionar o usuario pra pagina certa, ja que pra autor o redirect tem ser pra uma pagina com sufixo "es" e nao apenas "s"
             if($tipo == "autor"){
                 header("location:../../../modules/exibir".$tipo."es.php");
             }
@@ -72,7 +80,7 @@ if ($tipo == "usuario") {
         } 
 
     } catch (mysqli_sql_exception $e) {
-        // Código de erro 1062 indica uma entrada duplicada
+        // Trata a exceção
         if ($e->getCode() == 1062) {
             header("location:../../../modules/form".$tipo.".php?erro=duplicidade");
         } else {
@@ -87,15 +95,16 @@ if ($tipo == "usuario") {
 //cria uma autor na tabela.
 if ($tipo == "autor") {
 
-    try{
+    try{ //tenta criar 
         $autor = $_POST['nomeAutor'];
         $nacionalidade = $_POST['nacionalidade'];
 
-
+        //insere os dados na tabela autor
         $sql = "INSERT INTO autor (nome, nacionalidade)
     VALUES ('$autor', '$nacionalidade')";
 
         if ($conn->query($sql) === TRUE) {
+            //esse if serve para redirecionar o usuario pra pagina certa, ja que pra autor o redirect tem ser pra uma pagina com sufixo "es" e nao apenas "s"
             if($tipo == "autor"){
                 header("location:../../../modules/exibir".$tipo."es.php");
             }
@@ -107,7 +116,7 @@ if ($tipo == "autor") {
         } 
 
     } catch (mysqli_sql_exception $e) {
-        // Código de erro 1062 indica uma entrada duplicada
+        // Trata a exceção
         if ($e->getCode() == 1062) {
             header("location:../../../modules/form".$tipo.".php?erro=duplicidade");
         } else {
@@ -123,16 +132,18 @@ if ($tipo == "autor") {
 //cria uma categoria na tabela.
 if ($tipo == "categoria") {
 
-    try{
+    try{ //tenta criar 
 
         $genero = $_POST['genero'];
 
-
+        //insere os dados na tabela categoria
         $sql = "INSERT INTO categoria (genero)
     VALUES ('$genero')";
 
         if ($conn->query($sql) === TRUE) {
             if($tipo == "autor"){
+            //esse if serve para redirecionar o usuario pra pagina certa, ja que pra autor o redirect tem ser pra uma pagina com sufixo "es" e nao apenas "s"
+                
                 header("location:../../../modules/exibir".$tipo."es.php");
             }
             else{
@@ -143,7 +154,7 @@ if ($tipo == "categoria") {
         }   
 
     } catch (mysqli_sql_exception $e) {
-        // Código de erro 1062 indica uma entrada duplicada
+        // Trata a exceção
         if ($e->getCode() == 1062) {
             header("location:../../../modules/form".$tipo.".php?erro=duplicidade");
         } else {
@@ -159,7 +170,7 @@ if ($tipo == "categoria") {
 //cria um emprestimo na tabela.
 if ($tipo == "emprestimo") {
 
-    try{
+    try{ //tenta criar 
         //id;livro_id;usuario_id;data_emprestimo;data_devolucao;valor
         $id_usuarios = $_POST["id_usuario"];
         $id_livros = $_POST["id_livro"];
@@ -174,6 +185,7 @@ if ($tipo == "emprestimo") {
 
 
         if ($conn->query($sql) === TRUE) {
+            //esse if serve para redirecionar o usuario pra pagina certa, ja que pra autor o redirect tem ser pra uma pagina com sufixo "es" e nao apenas "s"
             if($tipo == "autor"){
                 header("location:../../../modules/exibir".$tipo."es.php");
             }
@@ -184,7 +196,7 @@ if ($tipo == "emprestimo") {
             echo "Error: " . $sql . "<br>" . $conn->error;
         } 
     } catch (mysqli_sql_exception $e) {
-        // Código de erro 1062 indica uma entrada duplicada
+        // Trata a exceção
         if ($e->getCode() == 1062) {
             header("location:../../../modules/form".$tipo.".php?erro=duplicidade");
         } else {
@@ -196,6 +208,7 @@ if ($tipo == "emprestimo") {
     }
 }
 
+//garante que vai fechar a conexão se nao tiver tipo;
 else{
     $conn->close();
 }
