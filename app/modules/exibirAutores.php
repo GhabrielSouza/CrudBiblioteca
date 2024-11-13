@@ -18,6 +18,7 @@
 
 <body>
     <header>
+     <!--Inicio da barra de navegação + inicio do menu da barra de navegação  -->
         <nav class="navbar navbar-expand-lg  header_container">
             <div class="container-fluid">
                 <a class="navbar-brand header_container_link_logo" href="#">Scriptorium</a>
@@ -31,6 +32,7 @@
                         <li class="nav-item">
                             <a class="nav-link header_container_link" aria-current="page" href="../../../index.php">Home</a>
                         </li>
+                        <!-- Lista dropdown do menu de cadastros-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,6 +48,7 @@
                                 <li><a class="dropdown-item " href="/modules/formUsuario.php">Cadastrar Usuario</a></li>
                             </ul>
                         </li>
+                        <!-- Lista dropdown do menu de exibições-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle header_container_link" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
