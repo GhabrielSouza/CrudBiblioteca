@@ -14,21 +14,21 @@
 </head>
 
 <?php
- //pega os dados tipo e id se existirem na url para serem usados 
-$tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
-$id = isset($_GET['id']) ? $_GET['id'] : null; 
+//pega os dados tipo e id se existirem na url para serem usados 
+$tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null;
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 
 //verifica se um erro foi passado pela url
-$erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
+$erro = isset($_GET['erro']) ? $_GET['erro'] : null;
 
 
 //se houver mostra na tela de acordo com o tipo do erro
-if($erro == "duplicidade"){
+if ($erro == "duplicidade") {
     echo "<script>alert('Ja existe este item');</script>";
 
 }
 
-if($erro == "padrao"){
+if ($erro == "padrao") {
     echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
 
 }
@@ -38,11 +38,11 @@ $disabled = isset($_GET['disabled']) ? $_GET['disabled'] : null;
 $disabled = true;
 
 //verifica o tipo de operação
-if($tipo == "update"){
+if ($tipo == "update") {
     echo '
 <body class="container">
     <div class="container_form">
-        <form action="src/update.php?tipo=livro&id='.$id.'" method="post" id="form_livro">
+        <form action="src/update.php?tipo=livro&id=' . $id . '" method="post" id="form_livro">
 
             <div class="div_titulo_livro">
                 <label for="titulo">Titulo:</label><br>
@@ -62,63 +62,60 @@ if($tipo == "update"){
 
             <label for="categoria_id">Selecione a categoria:</label>';
 
-            // Conexão com o banco de dados
-            require("src/conexao.php");
+    // Conexão com o banco de dados
+    require("src/conexao.php");
 
-            $sql = "SELECT * FROM categoria";
-            $result = $conn->query($sql);
+    $sql = "SELECT * FROM categoria";
+    $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                echo "<select name='categoria' class='categoria_id' id='categoria_id' required>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row["id_categoria"] . "'>" . $row["genero"] . "</option>";
-                }
-                echo "</select>";
-            } else {
-                echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
-                $disabled = false;
-            }
+    if ($result->num_rows > 0) {
+        echo "<select name='categoria' class='categoria_id' id='categoria_id' required>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["id_categoria"] . "'>" . $row["genero"] . "</option>";
+        }
+        echo "</select>";
+    } else {
+        echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
+        $disabled = false;
+    }
 
-            echo '
+    echo '
             <label for="autor_id" class="autor_id_label">Selecione o autor:</label>';
 
-            $sql = "SELECT * FROM autor";
-            $result = $conn->query($sql);
+    $sql = "SELECT * FROM autor";
+    $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                echo "<select name='autor' class='autor_id' id='autor_id' required>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row["id_autor"] . "'>" . $row["nome"] . "</option>";
-                }
-                echo "</select>";
-            } else {
-                echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
-                $disabled = false;
+    if ($result->num_rows > 0) {
+        echo "<select name='autor' class='autor_id' id='autor_id' required>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["id_autor"] . "'>" . $row["nome"] . "</option>";
+        }
+        echo "</select>";
+    } else {
+        echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
+        $disabled = false;
 
-            }
+    }
 
-            if ($disabled){
-                echo "<button type='submit'>Enviar</button>";
-            }
+    if ($disabled) {
+        echo "<button type='submit'>Enviar</button>";
+    } else {
+        echo "<button type='submit' disabled>Enviar</button>";
+    }
 
-            else{
-                echo "<button type='submit' disabled>Enviar</button>";
-            }
+    $conn->close();
 
-            $conn->close();
-
-echo '
+    echo '
 
         </form>
     </div>
 </body>
 ';
-}
-
-else{
+} else {
     echo '
 <body class="container">
     <div class="container_form">
+        <!-- criando formulario de cadastro de livro -->
         <form action="src/create.php?tipo=livro" method="post" id="form_livro">
 
             <div class="div_titulo_livro">
@@ -139,54 +136,56 @@ else{
 
             <label for="categoria_id">Selecione a categoria:</label>';
 
-            // Conexão com o banco de dados
-            require("src/conexao.php");
+    // Conexão com o banco de dados
+    require("src/conexao.php");
 
-            $sql = "SELECT * FROM categoria";
-            $result = $conn->query($sql);
+    //Faz a consulta no banco para buscar todas as categorias cadastradas
+    $sql = "SELECT * FROM categoria";
+    $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                echo "<select name='categoria' class='categoria_id' id='categoria_id' required>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row["id_categoria"] . "'>" . $row["genero"] . "</option>";
-                    
-                }
-                echo "</select>";
-            } else {
-                echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
-                $disabled = false;
+    //depois de verificar se existe categorias cadastradas, é criado um select/option para exibir as categorias
+    if ($result->num_rows > 0) {
+        echo "<select name='categoria' class='categoria_id' id='categoria_id' required>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["id_categoria"] . "'>" . $row["genero"] . "</option>";
 
-            }
+        }
+        echo "</select>";
+    } else {
+        //se não exister, é solicitada a criação
+        echo "<a href='./formCategoria.php'>Não existe categoria! favor criar</a>";
+        $disabled = false;
 
-            echo '
+    }
+
+    echo '
             <label for="autor_id" class="autor_id_label">Selecione o autor:</label>';
 
-            $sql = "SELECT * FROM autor";
-            $result = $conn->query($sql);
+    //o mesmo é feito para autor!
+    $sql = "SELECT * FROM autor";
+    $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                echo "<select name='autor' class='autor_id' id='autor_id' required>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row["id_autor"] . "'>" . $row["nome"] . "</option>";
-                }
-                echo "</select>";
-            } else {
-                echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
-                $disabled = false;
+    if ($result->num_rows > 0) {
+        echo "<select name='autor' class='autor_id' id='autor_id' required>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row["id_autor"] . "'>" . $row["nome"] . "</option>";
+        }
+        echo "</select>";
+    } else {
+        echo "<a href='./formAutor.php'>Não existe autor! favor criar</a>";
+        $disabled = false;
 
-            }
+    }
 
-            $conn->close();
+    $conn->close();
 
 
-            if ($disabled){
-                echo "<button type='submit'>Enviar</button>";
-            }
-
-            else{
-                echo "<button type='submit' disabled>Enviar</button>";
-            }
-echo '
+    if ($disabled) {
+        echo "<button type='submit'>Enviar</button>";
+    } else {
+        echo "<button type='submit' disabled>Enviar</button>";
+    }
+    echo '
         </form>
     </div>
 </body>
