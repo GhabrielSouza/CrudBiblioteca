@@ -73,13 +73,30 @@
         <h1 class="p-3">Autores:</h1>
         <div class="mx-5">
             <?php
+            //cria conexão com o banco de dados dando require no arquivo 
             require("src/conexao.php");
 
+
+            //verifica se existe um erro q foi passado via get
+            $erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
+
+            //se houver mostra na tela de acordo com o tipo do erro
+            if($erro == "padrao"){
+            echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
+            }
+
+            if($erro == "fk"){
+            echo "<script>alert('Não é possível excluir o autor pois ele está associado a um livro.');</script>";
+            }
+
+
+            //seleciona os dados da tabela autor para mostralos
             $sql = "SELECT *
         from autor";
             $result = $conn->query($sql);
 
 
+            //mostra os dados 
             if ($result->num_rows > 0) {
                 echo '<div class="d-flex justify-content-around flex-wrap ">';
                 while ($row = $result->fetch_assoc()) {
@@ -138,7 +155,8 @@
 </body>
 
 <script>
-  function confirmDelete() {
+// função pra confirmar o delete    
+function confirmDelete() {
     return confirm("Tem certeza de que deseja excluir este item?");
   }
 </script>

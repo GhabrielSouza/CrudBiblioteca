@@ -73,8 +73,22 @@
         <h1 class="p-3">Emprestimos:</h1>
         <div class="mx-5">
             <?php
+            //cria conexão
             require("src/conexao.php");
 
+            //verifica se um erro foi passado pela url
+            $erro = isset($_GET['erro']) ? $_GET['erro'] : null;
+
+            //se houver mostra na tela de acordo com o tipo do erro
+            if($erro == "padrao"){
+            echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
+            }
+
+            if($erro == "fk"){
+            echo "<script>alert('Não é possível excluir o autor pois ele está associado a um livro.');</script>";
+            }
+
+            //seleciona toso os dados de emprestimo para mostra-los
             $sql = "SELECT *
         FROM emprestimo e
         JOIN usuario u ON u.id_usuario = e.id_usuario
@@ -141,6 +155,7 @@
 </body>
 
 <script>
+    //função pra confirmar o delete
   function confirmDelete() {
     return confirm("Tem certeza de que deseja excluir este item?");
   }

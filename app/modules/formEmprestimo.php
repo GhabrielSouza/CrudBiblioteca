@@ -16,6 +16,8 @@
 <body>
   <div>
     <?php
+
+    // //pega os dados tipo,id,id_livro,titulo,id_usuarioe nome se existirem na url para serem usados 
     $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : null; 
     $id = isset($_GET['id_emprestimo']) ? $_GET['id_emprestimo'] : null; 
 
@@ -25,8 +27,11 @@
     $id_usuario = isset($_GET['id_usuario']) ? $_GET['id_usuario'] : null;
     $nome = isset($_GET['nome']) ? $_GET['nome'] : null;
     
+    //verifica se um erro foi passado pela url
     $erro = isset($_GET['erro']) ? $_GET['erro'] : null; 
 
+
+    //se houver mostra na tela de acordo com o tipo do erro
   if($erro == "duplicidade"){
       echo "<script>alert('Ja existe este item');</script>";
 
@@ -36,6 +41,9 @@
       echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
 
   }
+
+
+  //verifica o tipo de operação
 
     if($tipo == "update"){
       echo '

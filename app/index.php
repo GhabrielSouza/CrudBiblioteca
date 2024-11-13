@@ -16,7 +16,20 @@
 </head>
 
 <?php
+//cria conexão
 require('./src/conexao.php');
+
+//verifica se um erro foi passado pela url
+$erro = isset($_GET['erro']) ? $_GET['erro'] : null;
+
+//se houver mostra na tela de acordo com o tipo do erro
+if($erro == "padrao"){
+  echo "<script>alert('ocorreu um erro, tente novamente.');</script>";
+}
+
+if($erro == "fk"){
+  echo "<script>alert('Não é possível excluir o autor pois ele está associado a um livro.');</script>";
+}
 ?>
 
 <body>
@@ -70,6 +83,7 @@ require('./src/conexao.php');
 
 
     <?php
+    //seleciona todos os dados de livro para mostra-los
     $sql = "SELECT l.id_livro, l.titulo, l.descricao, a.nome, c.genero
     FROM livro AS l
     INNER JOIN autor AS  a ON a.id_autor = l.id_autor
@@ -145,6 +159,7 @@ require('./src/conexao.php');
 </body>
 
 <script>
+  //função para confirmar o delete
   function confirmDelete() {
     return confirm("Tem certeza de que deseja excluir este item?");
   }
